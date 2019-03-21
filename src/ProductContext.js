@@ -119,7 +119,18 @@ class ProductProvider extends Component {
   };
 
   myCartDecrement = curID => {
-    console.log(`Hello from myCartDecrement ${curID}`);
+    let tempCart = [...this.state.myCart];
+    const selectedProduct = tempCart.find(item => item.id === curID);
+    if (selectedProduct.count > 1) {
+      selectedProduct.count--;
+      selectedProduct.total = selectedProduct.price * selectedProduct.count;
+      this.setState(
+        {
+          myCart: [...tempCart]
+        },
+        () => this.addTotalPrice()
+      );
+    }
   };
 
   myCartRemoveItem = curID => {
