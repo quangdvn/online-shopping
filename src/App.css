@@ -1,0 +1,89 @@
+:root {
+  --mainBlue: #2a2a72;
+  --lightBlue: #009ffd;
+  --mainWhite: #f3f3f3;
+  --lightWhite: #e3e3e3;
+  --mainDark: #232528;
+  --mainYellow: #ffa400;
+  --mainRed: #ee1010;
+}
+
+body {
+  /** To override Bootstrap CSS **/
+  font-family: "Oswald", sans-serif !important;
+  background: var(--mainWhite) !important;
+  color: var(--mainDark) !important;
+}
+
+.text-xs {
+  font-size: 1rem;
+}
+
+.text-s {
+  font-size: 1.2rem;
+}
+
+.text-m {
+  font-size: 1.5rem;
+}
+
+.text-l {
+  font-size: 2rem;
+}
+
+.text-xl {
+  font-size: 3rem;
+}
+
+.text-title {
+  font-family: "Lobster", cursive;
+  letter-spacing: 0.3rem;
+}
+
+.text-blue {
+  color: var(--mainBlue);
+}
+
+.text-white {
+  color: var(--mainWhite);
+}
+
+.text-bright {
+  color: var(--lightBLue);
+}
+
+.text-red {
+  color: var(--mainRed);
+}
+
+.text-black {
+  color: var(--mainDark);
+}
+
+.text-border {
+  border: 1px solid red;
+}
+
+.my-btn:focus {
+  outline: none !important;
+}
+
+.btn-black {
+  background: transparent;
+  text-transform: capitalize;
+  font-size: 0.8rem !important;
+  color: var(--mainDark);
+  border-radius: 0 !important;
+  border: 0.2rem solid var(--mainDark) !important;
+}
+
+.btn-black:hover {
+  background: var(--mainDark) !important;
+  color: var(--mainWhite) !important;
+}
+
+.cart-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--mainYellow);
+}
