@@ -18,8 +18,9 @@
  # on:
  #   branch: master
 
- language: node_js
-node_js: node
+language: node_js
+node_js: 
+  -10.15.1
 cache:
   directories:
     - node_modules
