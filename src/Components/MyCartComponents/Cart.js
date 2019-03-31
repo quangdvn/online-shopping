@@ -22,7 +22,7 @@ export default class Cart extends Component {
                   <Title brand="My" title="cart" />
                   <CartColumns />
                   <CartList listValue={value} />
-                  <CartTotal totalValue={value} />
+                  <CartTotal totalValue={value} shoppingHistory={this.props.history}/>
                 </React.Fragment>
               );
             } else {
