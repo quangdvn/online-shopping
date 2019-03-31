@@ -11,9 +11,8 @@ script:
   - yarn run build
 
 deploy:
-  provider: pages
-  skip-cleanup: true
-  netlify-token: $NETLIFY_AUTH_TOKEN
-  local_dir: build
+  provider: script
+  script: netlify deploy -s $NETLIFY_SITE_ID -t $NETLIFY_ACCESS_TOKEN -p ./build
+  skip_cleanup: true
   on:
     branch: master
