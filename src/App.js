@@ -29,7 +29,7 @@ class App extends Component {
                         path="/auth/google/callback/success"
                         component={GoogleCallback}
                     />
-                    <Route path="/details" component={Details} />
+                    <Route path="/details/:slug.:id" component={Details} />
                     <Route path="/cart" component={Cart} />
                     <Route component={Default} />
                 </Switch>
