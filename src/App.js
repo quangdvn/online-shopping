@@ -24,13 +24,13 @@ class App extends Component {
                 <Navbar />
                 <Switch>
                     <Route exact path="/" component={ProductList} />
-                    <Route path="/login" component={LoginForm} />
-                    <GoogleCallback
+                    <Route exact path="/login" component={LoginForm} />
+                    <Route exact path="/details/:slug.:id" component={Details} />
+                    <Route exact path="/cart" component={Cart} />
+                       <GoogleCallback
                         path="/auth/google/callback/success"
                         component={GoogleCallback}
                     />
-                    <Route path="/details/:slug.:id" component={Details} />
-                    <Route path="/cart" component={Cart} />
                     <Route component={Default} />
                 </Switch>
                 <ModalPopUp />
