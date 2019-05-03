@@ -1,38 +1,80 @@
-/**
- * * Headline of the web, contain important information
- */
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import logo from "../logo.svg";
-import { BlueButton } from "./StyledComponents/Button";
-import { LogoAnimate } from "./StyledComponents/Logo";
-import { NavWrapper } from "./StyledComponents/NavWrapper";
+import React from 'react'
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink
+} from 'reactstrap'
+import {connect} from 'react-redux'
+import {logoutAction} from '../redux/actions/authActions'
+import {BlueButton} from './StyledComponents/Button'
+import {Link} from 'react-router-dom'
 
-export default class Navbar extends Component {
-  render() {
-    return (
-      <NavWrapper className="navbar navbar-expand-sm navbar-dark px-sm-5">
-        <Link to="/">
-          <LogoAnimate>
-            <img src={logo} alt="brand" className="navbar-brand" width="70px" />
-          </LogoAnimate>
-        </Link>
-        <ul className="navbar-nav align-items-center">
-          <li className="nav-item ml-5">
-            <Link to="/" className="nav-link text-s text-white">
-              Products
-            </Link>
-          </li>
-        </ul>
-        <Link to="/cart" className="ml-auto text-m">
-          <BlueButton>
-            <span className="mr-2">
-              <i className="fas fa-shopping-cart" />
-            </span>
-            My Cart
-          </BlueButton>
-        </Link>
-      </NavWrapper>
-    );
-  }
+class NavBar extends React.Component {
+    state = {
+        isOpen: false
+    }
+
+    _handleLogout = () => {
+        this.props.logoutAction(this.props.history)
+    }
+    toggle = () => {
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
+    }
+    render() {
+        const {user, loading, isAuthenticated} = this.props.auth
+        const {username} = user
+        return (
+            <div className="Navbar">
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand href="/">Sitib</NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            {!loading &&
+                                (isAuthenticated ? (
+                                    <>
+                                        <NavItem className="username">
+                                            Hello {username} !
+                                        </NavItem>
+                                        <NavItem>
+                                            <BlueButton onClick={this._handleLogout}>Logout</BlueButton>
+                                        </NavItem>
+                                        <NavItem>
+                                            <Link
+                                                to="/cart">
+                                                <BlueButton>
+                                                    <span className="mr-2">
+                                                        <i className="fas fa-shopping-cart" />
+                                                    </span>
+                                                    My Cart
+                                                </BlueButton>
+                                            </Link>
+                                        </NavItem>
+                                    </>
+                                ) : (
+                                    <NavItem>
+                                        <NavLink href="/login">Login </NavLink>
+                                    </NavItem>
+                                ))}
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </div>
+        )
+    }
 }
+
+const mapStateToProps = state => ({
+    auth: state.auth
+})
+
+export default connect(
+    mapStateToProps,
+    {logoutAction}
+)(NavBar)
