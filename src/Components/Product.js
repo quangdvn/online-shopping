@@ -20,7 +20,7 @@ export default class Product extends Component {
                 className="img-container img-fluid p-5"
                 onClick={() => value.handleDetail(id)}
               >
-                <Link to="/details">
+                <Link to={`/details/${value.SEO_URLConverter(title)}.${id}`}>
                   <img src={img} alt="product" className="card-img-top" />
                 </Link>
                 <button
