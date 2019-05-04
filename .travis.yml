@@ -27,12 +27,13 @@ install:
   - npm install
 
 before_deploy:
-  - npm install netlify-cli -g
   - npm run build
+  - npm install netlify-cli -g
+  
 
 deploy:
   provider: script
-  script: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --dir=build --message "$NETLIFY_SITE_ID $NETLIFY_ACCESS_TOKEN"
+  script: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN -p --dir ./build 
   skip_cleanup: true
   on:
     branch: master
