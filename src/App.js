@@ -13,6 +13,7 @@ import LoginForm from './Components/LoginForm/LoginForm'
 import GoogleCallback from './Components/LoginForm/GoogleCallback'
 import {getUser} from './redux/actions/authActions'
 import store from './redux/store'
+import Footer from './Components/footer/Footer'
 
 class App extends Component {
     componentDidMount() {
@@ -33,6 +34,7 @@ class App extends Component {
                     />
                     <Route component={Default} />
                 </Switch>
+                <Footer/>
                 <ModalPopUp />
             </>
         )
