@@ -32,7 +32,7 @@ before_deploy:
 
 deploy:
   provider: script
-  script: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --dir=build 
+  script: netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --dir=build --message "$NETLIFY_SITE_ID $NETLIFY_ACCESS_TOKEN"
   skip_cleanup: true
   on:
     branch: master
