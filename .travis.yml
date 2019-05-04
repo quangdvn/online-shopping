@@ -21,6 +21,12 @@
 language: node_js
 node_js:
   - "10.15.3"
+env:
+  - CI=true
+cache:
+  - yarn
+  - directories:
+      - node_modules
 script:
   - npm run test
 install:
