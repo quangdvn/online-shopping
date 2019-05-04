@@ -27,7 +27,7 @@ install:
   - yarn install
 
 before_deploy:
-  - yarn add netlify-cli -g
+  - npm install netlify-cli -g
   - yarn run build
 
 deploy:
