@@ -29,11 +29,13 @@ cache:
       - node_modules
 script:
   - npm run test
-  - ls
 
 before_deploy:
   - npm run build
   - npm install netlify-cli -g
+  - ls
+  - cd build 
+  - ls 
   
 
 deploy:
