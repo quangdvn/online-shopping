@@ -8,25 +8,25 @@ import {Link} from 'react-router-dom'
 export default class Banner extends Component {
     render() {
         return (
-            <div class="hero-banner">
-                <div class="hero-wrapper">
-                    <div class="hero-left">
-                        <h1 class="hero-title">
+            <div className="hero-banner">
+                <div className="hero-wrapper">
+                    <div className="hero-left">
+                        <h1 className="hero-title">
                             Sneaker your <br /> best friend
                         </h1>
-                        <div class="d-sm-flex flex-wrap">
+                        <div className="d-sm-flex flex-wrap">
                             <Link
-                                class="button button-hero button-shadow"
+                                className="button button-hero button-shadow"
                                 to="/">
                                 Buy Now
                             </Link>
                             <a
-                                class="hero-banner__video"
+                                className="hero-banner__video"
                                 href="https://www.youtube.com/watch?v=hqaUF2JNY_U">
                                 Watch Video
                             </a>
                         </div>
-                        <ul class="hero-info d-none d-lg-block">
+                        <ul className="hero-info d-none d-lg-block">
                             <li>
                                 <img src={fasServiceIcon} alt="" />
                                 <h4>Fast Service</h4>
@@ -41,11 +41,11 @@ export default class Banner extends Component {
                             </li>
                         </ul>
                     </div>
-                    <div class="hero-right">
-                        <div class="owl-carousel owl-theme hero-carousel">
-                            <div class="hero-carousel-item">
+                    <div className="hero-right">
+                        <div className="owl-carousel owl-theme hero-carousel">
+                            <div className="hero-carousel-item">
                                 <img
-                                    class="img-fluid"
+                                    className="img-fluid"
                                     src={banner}
                                     alt=""
                                    
