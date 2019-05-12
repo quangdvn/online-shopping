@@ -74,7 +74,7 @@ class NewLoginForm extends Component {
                                                 placeholder="Password"
                                             />
                                         </div>
-                                        <button className="btn btn-lg btn-primary btn-block text-uppercase">
+                                        <button  onClick={this._handleClick} className="btn btn-lg btn-primary btn-block text-uppercase">
                                             Sign in
                                         </button>
                                         <hr className="my-4" />
