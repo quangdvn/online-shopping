@@ -15,6 +15,7 @@ import store from './redux/store'
 import Footer from './Components/footer/Footer'
 import Navbar from './Components/header/Navbar'
 import Home from './Components/home/Home'
+import NewLoginForm from './Components/LoginForm/NewLoginForm'
 
 class App extends Component {
     componentDidMount() {
@@ -26,7 +27,7 @@ class App extends Component {
                 <Navbar />
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/login" component={LoginForm} />
+                    <Route exact path="/login" component={NewLoginForm} />
                     <Route
                         exact
                         path="/details/:slug.:id"
