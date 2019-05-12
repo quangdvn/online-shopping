@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 .env.development
+Dockerfile
+deployment.yml
 # testing
 /coverage
 

@@ -1,8 +1,11 @@
 import createAPI from './API'
 
 const getBaseURL = () => {
-    const url = 'https://authlivs.herokuapp.com'
-    return url
+    //  const url = 'https://authlivs.herokuapp.com'
+    return process.env.NODE_ENV === 'development'
+          ? 'http://localhost:5000'
+       // :  : '/api'
+         : 'https://authlivs.herokuapp.com'
 }
 
 const options = {

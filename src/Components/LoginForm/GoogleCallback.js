@@ -14,7 +14,7 @@ const getQueryToken = props => {
 const GoogleCallback = ({component: Component, auth, ...rest}) => (
     <Route
         {...rest}
-        render={props => getQueryToken(props) && <Redirect to="/login" />}
+        render={props => getQueryToken(props) && <Redirect to="/" />}
     />
 )
 export default GoogleCallback

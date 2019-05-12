@@ -2,8 +2,11 @@ import React, {Component} from 'react'
 
 export default class LoginWithGoogleButton extends Component {
     _getAuthURL = () => {
-        const url = 'https://authlivs.herokuapp.com/auth/google/'
-        return url
+        // const url = 'https://authlivs.herokuapp.com/auth/google/'
+        return process.env.NODE_ENV === 'development'
+            ? 'http://localhost:5000/google'
+            //: '/api/auth/google/'
+            : 'https://authlivs.herokuapp.com/google'
     }
     render() {
         return (
