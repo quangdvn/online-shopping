@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {loginAction} from '../../redux/actions/authActions'
-import {Link} from 'react-router-dom'
+import {loginAction, signUpAction} from '../../redux/actions/authActions'
 
-class NewLoginForm extends Component {
+class SignUp extends Component {
     state = {
         username: '',
-        password: ''
+        password: '',
+        email: ''
     }
+
     componentDidUpdate(prevProps) {
         const isAuthenticated = this.props.auth.isAuthenticated
         if (
@@ -18,12 +19,6 @@ class NewLoginForm extends Component {
         }
     }
 
-    _getAuthURL = () => {
-        return process.env.NODE_ENV === 'development'
-            ? 'http://localhost:5000/google'
-            : //: '/api/auth/google/'
-              'https://authlivs.herokuapp.com/google'
-    }
     _handleInputChange = e => {
         return this.setState({
             [e.target.name]: e.target.value
@@ -32,20 +27,23 @@ class NewLoginForm extends Component {
 
     _handleClick = async e => {
         e.preventDefault()
-        const {username, password} = this.state
-        this.props.loginAction({username, password}, this.props.history)
+        const {username, password, email} = this.state
+        this.props.signUpAction({username, password, email}, this.props.history)
     }
+
     render() {
-        const {email, password} = this.state
+        const {email, password, username} = this.state
+        const {errors}  = this.props
         return (
-            <div className="NewLoginForm">
+            <div className="SignUp">
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
                             <div className="card card-signin my-5">
                                 <div className="card-body">
+                                  {errors && <p className="text-danger"> {errors.message} </p>}
                                     <h5 className="card-title text-center">
-                                        Sign In
+                                        Sign Up
                                     </h5>
                                     <form
                                         className="form-signin form-group"
@@ -54,7 +52,7 @@ class NewLoginForm extends Component {
                                             <input
                                                 type="text"
                                                 name="username"
-                                                value={email}
+                                                value={username}
                                                 onChange={
                                                     this._handleInputChange
                                                 }
@@ -74,23 +72,25 @@ class NewLoginForm extends Component {
                                                 placeholder="Password"
                                             />
                                         </div>
+                                        <div className="form-group">
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                value={email}
+                                                onChange={
+                                                    this._handleInputChange
+                                                }
+                                                className="form-control"
+                                                placeholder="Email"
+                                            />
+                                        </div>
                                         <button
                                             onClick={this._handleClick}
                                             className="btn btn-lg btn-primary btn-block text-uppercase">
-                                            Sign in
+                                            Sign Up
                                         </button>
 
                                         <hr className="my-4" />
-                                        <label>
-                                            New to Sitib?
-                                            <Link to={'/signup'}> Sign up now »</Link>
-                                        </label>
-                                        <a
-                                            href={this._getAuthURL()}
-                                            className="btn btn-lg btn-google btn-block text-uppercase">
-                                            <i className="fab fa-google mr-2" />
-                                            Sign in with Google
-                                        </a>
                                     </form>
                                 </div>
                             </div>
@@ -109,5 +109,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    {loginAction}
-)(NewLoginForm)
+    {loginAction, signUpAction}
+)(SignUp)

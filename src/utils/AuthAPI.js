@@ -25,6 +25,20 @@ export const makeLoginRequest = ({username = ' ', password = ''}) => {
     })
 }
 
+
+export const makeSignUpRequest = ({username = ' ', password = '', email=''}) => {
+    return api.makeRequest({
+        url: '/signup',
+        method: 'POST',
+        data: {
+            username,
+            password,
+            email
+        }
+    })
+}
+
+
 export const getUserByToken = () => {
     return api.makeAuthRequest({
         url: '/user',
