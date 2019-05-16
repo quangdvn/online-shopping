@@ -17,6 +17,7 @@ import Home from './Components/home/Home'
 import NewLoginForm from './Components/LoginForm/NewLoginForm'
 import PrivateRoute from './private-route/PrivateRoute'
 import SignUp from './Components/signup/SignUp'
+import Manager from './Components/manager/Manager'
 
 class App extends Component {
     componentDidMount() {
@@ -30,7 +31,7 @@ class App extends Component {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/login" component={NewLoginForm} />
                     <Route exact path="/signup" component={SignUp} />
-
+                    <PrivateRoute exact path="/manager" component={Manager} />
                     <Route
                         exact
                         path="/details/:slug.:id"
